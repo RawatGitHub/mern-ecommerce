@@ -8,11 +8,12 @@ const userRoute = require("./routes/userRoute");
 const orderRoute = require("./routes/orderRoute");
 const paymentRoute = require("./routes/paymentRoute");
 const path = require("path");
-
+const compression = require("compression");
 // when its in development
 if (process.env.NODE_ENV !== "PRODUCTION")
   require("dotenv").dotenv.config({ path: "backend/config/config.env" });
 
+app.use(compression()); // compress all routes
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
